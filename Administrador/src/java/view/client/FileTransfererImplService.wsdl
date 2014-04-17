@@ -1,0 +1,62 @@
+<definitions
+     name="FileTransfererImplService"
+     targetNamespace="http://view/"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://view/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://view/" schemaLocation="FileTransfererImplService_xsd_1.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="download">
+        <part name="parameters" element="tns:download"/>
+    </message>
+    <message name="downloadResponse">
+        <part name="parameters" element="tns:downloadResponse"/>
+    </message>
+    <message name="upload">
+        <part name="parameters" element="tns:upload"/>
+    </message>
+    <message name="uploadResponse">
+        <part name="parameters" element="tns:uploadResponse"/>
+    </message>
+    <portType name="FileTransfererImpl">
+        <operation name="download">
+            <input message="tns:download"/>
+            <output message="tns:downloadResponse"/>
+        </operation>
+        <operation name="upload">
+            <input message="tns:upload"/>
+            <output message="tns:uploadResponse"/>
+        </operation>
+    </portType>
+    <binding name="FileTransfererImplPortBinding" type="tns:FileTransfererImpl">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="download">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="upload">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="FileTransfererImplService">
+        <port name="FileTransfererImplPort" binding="tns:FileTransfererImplPortBinding">
+            <soap:address location="http://localhost:7101/NotifMundial-ViewController-context-root/FileTransfererImplService"/>
+        </port>
+    </service>
+</definitions>

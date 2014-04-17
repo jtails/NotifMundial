@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="EquiposWSImpl">
+      <implementation-class>view.webservices.impl.EquiposWSImpl</implementation-class>
+    </service>
+    <service name="FileTransfererImpl">
+      <implementation-class>view.webservices.impl.FileTransfererImpl</implementation-class>
+    </service>
+    <service name="PartidosWSImpl">
+      <implementation-class>view.webservices.impl.PartidosWSImpl</implementation-class>
+    </service>
+    <service name="TPosicionesWSImpl">
+      <implementation-class>view.webservices.impl.TPosicionesWSImpl</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>true</jsr109>
+</jax-ws>

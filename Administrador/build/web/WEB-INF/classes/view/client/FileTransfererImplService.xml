@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns2="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://view/"
+                     localpart="FileTransfererImplService"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://view/"
+                    localpart="FileTransfererImplPort"/>
+         <runtime/>
+         <operations>
+            <operation name="download"/>
+            <operation name="upload"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>
