@@ -116,7 +116,6 @@
 
         </div>
         <!-- END MAIN PANEL -->
-
         <!--================================================== -->
         <%@include file="../WEB-INF/jspf/_scripts.jspf" %>
     </body>
