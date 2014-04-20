@@ -9,6 +9,7 @@ import view.beans.EmpresasBean;
 import view.beans.EquiposBean;
 import view.beans.NotificacionesBean;
 import view.beans.PartidosBean;
+import view.notification.android.Dispositivos;
 
 
 public class NotificacionesDAO {
@@ -21,7 +22,8 @@ public class NotificacionesDAO {
                     NotificacionesBean nBean=new NotificacionesBean();
                     nBean.setIdnotificacion((String)map.get("id_notificacion"));
                     nBean.setIdnotif((String)map.get("idnotif"));
-                    nBean.setTipodisp((String)map.get("tipodisp"));
+                    Enum dispositivo=Dispositivos.getDispositivo((String)map.get("tipodisp"));
+                    nBean.setDispositivo(dispositivo);
                     listN.add(nBean);
                 }
             }
@@ -35,7 +37,8 @@ public class NotificacionesDAO {
                 for(Map map:result){
                     nBean.setIdnotificacion((String)map.get("id_notificacion"));
                     nBean.setIdnotif((String)map.get("idnotif"));
-                    nBean.setTipodisp((String)map.get("tipodisp"));
+                    Enum dispositivo=Dispositivos.getDispositivo((String)map.get("tipodisp"));
+                    nBean.setDispositivo(dispositivo);
                     nBean.setId_empresa((String)map.get("id_empresa"));
                 }
             }
@@ -43,36 +46,14 @@ public class NotificacionesDAO {
     }
     
     
-    /*public EmpresasBean searchEmpresa(String codigo){
-            List<Map> result = ConnectionManager.executeQuery("select * from empresas where codigo='"+codigo+"'");
-            EmpresasBean eBean=new EmpresasBean();
-            if(result!=null){
-                for(Map map:result){
-                    eBean.setId_empresa((String)map.get("id_empresa"));
-                    eBean.setNombre((String)map.get("nombre"));
-                    eBean.setCodigo((String)map.get("codigo"));
-                    Map<String,String> imagenes=new HashMap<String,String>();
-                    for(int i=1;i<7;i++)
-                        imagenes.put("imagen"+i,(String)map.get("imagen"+i));
-                    eBean.setImagenes(imagenes);
-                }
-            }
-        return eBean;
-    }*/
-    
-    
     public boolean addDispNotificacion(NotificacionesBean notificacion){
         //Validamos que el dispositivo no este Registrado para Recibir Notificaciones
         NotificacionesBean nBean=getDispNotificacionesById(notificacion);
         if(nBean.getIdnotificacion()==null){
-            boolean status=ConnectionManager.execute("insert into notificaciones(id_empresa,idnotif,tipodisp) values("+notificacion.getId_empresa()+",'"+notificacion.getIdnotif()+"','"+notificacion.getTipodisp()+"')");
+            boolean status=ConnectionManager.execute("insert into notificaciones(id_empresa,idnotif,tipodisp) values("+notificacion.getId_empresa()+",'"+notificacion.getIdnotif()+"','"+notificacion.getDispositivo()+"')");
             return status;
         }
         return true;
     }
         
-    /*public boolean deleteEmpresa(EmpresasBean empresa){
-        boolean status=ConnectionManager.execute("delete from empresas where id_empresa="+empresa.getId_empresa()+"");
-        return status;
-    }*/
 }

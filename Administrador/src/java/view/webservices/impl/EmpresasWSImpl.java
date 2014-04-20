@@ -18,6 +18,7 @@ import view.dao.EmpresasDAO;
 import view.dao.EquiposDAO;
 import view.dao.NotificacionesDAO;
 import view.dao.PartidosDAO;
+import view.notification.android.Dispositivos;
 import view.webservices.EmpresasWS;
 
 @Path("/EmpresasWS")
@@ -37,8 +38,10 @@ public class EmpresasWSImpl{
             //Agregamos el Dispositivo para Notificaciones
             NotificacionesBean notificacion=new NotificacionesBean();
             notificacion.setId_empresa(empresa.getId_empresa());
-            notificacion.setIdnotif(notifid);//Identificador para la Notificacion
-            notificacion.setTipodisp(tipod);
+            notificacion.setIdnotif(notifid);//Identificador para la Notificación
+            
+            Enum dispositivo=Dispositivos.getDispositivo(tipod);
+            notificacion.setDispositivo(dispositivo);
             addNotificacion(notificacion);
             boolean status=validaLicencias(empresa);
             if(status){

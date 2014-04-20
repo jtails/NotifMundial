@@ -30,6 +30,9 @@
             <li>
                 <a href="Menu?opcion=Partidos"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Editar Partidos</span></a>
             </li>
+            <li>
+                <a href="Menu?opcion=Configuraciones"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Configuraciones</span></a>
+            </li>
         </ul>
     </nav>
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>

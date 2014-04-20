@@ -17,22 +17,17 @@
         <servlet-name>EmpresasWSImpl</servlet-name>
         <url-pattern>/EmpresasWSImpl</url-pattern>
     </servlet-mapping>-->
-    
-  <servlet>
-    <servlet-name>jersey-serlvet</servlet-name>
-    <servlet-class>
+    <servlet>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-class>
          com.sun.jersey.spi.container.servlet.ServletContainer
     </servlet-class>
-    <load-on-startup>1</load-on-startup>
- </servlet>
- 
- <servlet-mapping>
-    <servlet-name>jersey-serlvet</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
- </servlet-mapping>
- 
- 
-    
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
     <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>jdbc/notifmundial</res-ref-name>
@@ -68,6 +63,10 @@
         <servlet-name>Estadisticas</servlet-name>
         <servlet-class>view.servlets.TPosiciones</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Configuraciones</servlet-name>
+        <servlet-class>view.servlets.Configuraciones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Estadisticas</servlet-name>
         <url-pattern>/Estadisticas</url-pattern>
@@ -96,7 +95,10 @@
         <servlet-name>IniciarPartido</servlet-name>
         <url-pattern>/IniciarPartido</url-pattern>
     </servlet-mapping>
-    
+        <servlet-mapping>
+        <servlet-name>Configuraciones</servlet-name>
+        <url-pattern>/Configuraciones</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>

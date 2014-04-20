@@ -37,9 +37,9 @@ public class ConnectionManager {
             getConnection();*/
                  
             //Tomcat
-            initContext = new InitialContext();
+            /*initContext = new InitialContext();
             envContext  = (Context)initContext.lookup("java:/comp/env");
-            ds = (DataSource)envContext.lookup("jdbc/notifmundial");
+            ds = (DataSource)envContext.lookup("jdbc/notifmundial");*/
             getConnection();
             
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class ConnectionManager {
         }
     }
     
-    public static void getConnection(){
+    /*public static void getConnection(){
         if(con==null){
             try {
                 con = ds.getConnection();
@@ -55,11 +55,11 @@ public class ConnectionManager {
                 e.printStackTrace();
             } 
         }
-    }
+    }*/
     
 
   //Heroku
-  /*public static void getConnection(){
+  public static void getConnection(){
     URI dbUri=null;
     try {
         dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -72,7 +72,7 @@ public class ConnectionManager {
     catch (Exception e) {
         e.printStackTrace();
     }
-  }*/
+  }
     
     public static List<Map> executeQuery(String query){
         //Connection con=null;

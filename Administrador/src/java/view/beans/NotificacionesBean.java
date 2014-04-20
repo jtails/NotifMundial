@@ -19,12 +19,12 @@ public class NotificacionesBean {
         this.idnotif = idnotif;
     }
 
-    public String getTipodisp() {
-        return tipodisp;
+    public Enum getDispositivo() {
+        return dispositivo;
     }
 
-    public void setTipodisp(String tipodisp) {
-        this.tipodisp = tipodisp;
+    public void setDispositivo(Enum dispositivo) {
+        this.dispositivo = dispositivo;
     }
 
     public String getId_empresa() {
@@ -37,6 +37,6 @@ public class NotificacionesBean {
     
     private String idnotificacion;
     private String idnotif;
-    private String tipodisp;
+    private Enum dispositivo;
     private String id_empresa;
 }

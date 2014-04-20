@@ -3,15 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/beans/DetailsPartidoBean.java</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/webservices/impl/EmpresasWSImpl.java</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/web/WEB-INF/Empresas.jsp</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/beans/EmpresasBean.java</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/dao/NotificacionesDAO.java</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/dao/EmpresasDAO.java</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/servlets/Menu.java</file>
-            <file>file:/C:/Users/EquipoSKY/Documents/NetBeansProjects/NotifMundial/src/java/view/dao/ConnectionManager.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/web/WEB-INF/menu.jsp</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/log4j.properties</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/dao/NotificacionesDAO.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/beans/EmpresasBean.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/servlets/Notificaciones.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/servlets/Menu.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/servlets/IniciarPartido.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/webservices/impl/EmpresasWSImpl.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/notification/android/NotificationServiceImpl.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/web/WEB-INF/Partidos.jsp</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/beans/ConfiguracionesBean.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/beans/NotificacionesBean.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/web/WEB-INF/jspf/_menu.jspf</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/dao/ConfiguracionesDAO.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/servlets/Empresas.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/dao/EmpresasDAO.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/web/WEB-INF/Configuraciones.jsp</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/servlets/Configuraciones.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/beans/WrapperBean.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/notification/android/Dispositivos.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/dao/ConnectionManager.java</file>
+            <file>file:/C:/Users/EquipoSKY/Documents/GitHub/NotifMundial/Administrador/src/java/view/notification/android/GCMRequest.java</file>
         </group>
     </open-files>
 </project-private>

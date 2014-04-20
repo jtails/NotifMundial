@@ -9,10 +9,12 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import view.beans.ConfiguracionesBean;
 import view.beans.EmpresasBean;
 import view.beans.EquiposBean;
 import view.beans.PartidosBean;
 import view.beans.TPosicionesBean;
+import view.dao.ConfiguracionesDAO;
 import view.dao.ConnectionManager;
 import view.dao.EmpresasDAO;
 import view.dao.EquiposDAO;
@@ -57,6 +59,11 @@ public class Menu extends HttpServlet {
         List<EmpresasBean> empresas=empresasDAO.getEmpresas();
         request.setAttribute("Empresas",empresas);
         
+        //Consultamos las Configuraciones
+        ConfiguracionesDAO configuracionesDAO=new ConfiguracionesDAO();
+        ConfiguracionesBean configuraciones=configuracionesDAO.getConfiguraciones();
+        request.setAttribute("Configuraciones",configuraciones);
+        
         
         String opcion=request.getParameter("opcion");
         if(opcion.equalsIgnoreCase("Partidos")){
@@ -79,6 +86,9 @@ public class Menu extends HttpServlet {
         }
         if(opcion.equalsIgnoreCase("Estadisticas")){
             request.getRequestDispatcher("/WEB-INF/TPosiciones.jsp").forward(request, response);
+        }
+        if(opcion.equalsIgnoreCase("Configuraciones")){
+            request.getRequestDispatcher("/WEB-INF/Configuraciones.jsp").forward(request, response);
         }
     }
     

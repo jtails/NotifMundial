@@ -1,8 +1,9 @@
 package view.notification.android;
 
 import java.io.Serializable;
+import javapns.notification.Payload;
 
-public class GCMRequest implements Serializable {
+public class GCMRequest extends Payload implements Serializable {
     private static final long serialVersionUID = 1826014008550426786L;
     /**
      * Accion a tomar
