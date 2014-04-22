@@ -1,4 +1,4 @@
-package view.notification.android;
+package view.notification;
 
 public enum Dispositivos {
     ANDROID("Android"),IOS("iOS");

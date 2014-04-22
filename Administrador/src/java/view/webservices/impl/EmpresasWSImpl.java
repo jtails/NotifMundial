@@ -18,7 +18,7 @@ import view.dao.EmpresasDAO;
 import view.dao.EquiposDAO;
 import view.dao.NotificacionesDAO;
 import view.dao.PartidosDAO;
-import view.notification.android.Dispositivos;
+import view.notification.Dispositivos;
 import view.webservices.EmpresasWS;
 
 @Path("/EmpresasWS")

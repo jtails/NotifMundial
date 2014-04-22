@@ -37,9 +37,9 @@
                username="jnigmojaoznohq" password="-7WmKuA87686qWg9ATWyKf_OrF" driverClassName="org.postgresql.Driver"
                url="jdbc:postgresql://ec2-54-225-101-18.compute-1.amazonaws.com:5432/d5la79qijlgo0g"/>-->
                
-<!--<Resource name="jdbc/notifmundial" auth="Container" type="javax.sql.DataSource"
+<Resource name="jdbc/notifmundial" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="10000"
                username="postgres" password="welcome1" driverClassName="org.postgresql.Driver"
-               url="jdbc:postgresql://localhost:5432/postgres"/>-->
+               url="jdbc:postgresql://localhost:5432/postgres"/>
 
 </Context>

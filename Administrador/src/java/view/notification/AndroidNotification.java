@@ -1,4 +1,4 @@
-package view.notification.android;
+package view.notification;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -9,7 +9,7 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 
-public class NotificationServiceImpl{
+public class AndroidNotification{
 
     private static final String GCM_URL =
         "https://android.googleapis.com/gcm/send";
@@ -18,8 +18,8 @@ public class NotificationServiceImpl{
     private static final String GOOGLE_API_KEY =
         "key=AIzaSyAmaHZc1FgwGGZkQe1t9zHj3rE3eoqHse0";
 
-    public GCMResponse sendNotification(GCMRequest request) {
-        GCMResponse response = new GCMResponse();
+    public PayloadResponse sendNotification(AndroidPayloadRequest request) {
+        PayloadResponse response = new PayloadResponse();
         javax.net.ssl.HttpsURLConnection connection=null;
         try {
             URL url = new URL(GCM_URL);
@@ -55,14 +55,14 @@ public class NotificationServiceImpl{
                 msg += output;
             }
             Gson gson = new Gson();
-            response = gson.fromJson(msg, GCMResponse.class);
-            if("1".equals(response.getSuccess())){
+            response = gson.fromJson(msg, PayloadResponse.class);
+            /*if("1".equals(response.getSuccess())){
                 response.setErrorMessage("mensaje enviado");
                 System.out.println("mensaje enviado");
             }else{
                 response.setErrorMessage((String)response.getErrorMessage());
                 System.out.println(response.getErrorMessage());
-            }
+            }*/
         } catch (Exception e) {
             response.setSuccess("0");
             response.setErrorMessage(e.getMessage());

@@ -5,9 +5,11 @@ import java.io.PrintWriter;
 
 import java.util.ArrayList;
 import java.util.List;
+import javapns.notification.PushNotificationPayload;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+import org.json.JSONException;
 
 import view.beans.DetailsPartidoBean;
 import view.beans.EquiposBean;
@@ -15,8 +17,9 @@ import view.beans.PartidosBean;
 import view.dao.ConnectionManager;
 import view.dao.EquiposDAO;
 import view.dao.PartidosDAO;
-import view.notification.android.GCMRequest;
-import view.notification.android.NotificationServiceImpl;
+import view.notification.AndroidPayloadRequest;
+import view.notification.AndroidNotification;
+import view.notification.GenericPayloadRequest;
 
 public class Partidos extends HttpServlet {
     private static final String CONTENT_TYPE = "text/html; charset=windows-1252";
@@ -152,15 +155,8 @@ public class Partidos extends HttpServlet {
         if(status){
             ConnectionManager.commit();
              //Enviamos la Notificacion
-            GCMRequest requestGCM=new GCMRequest();
-            requestGCM.setIdPartido(partido.getIdpartido());
-            requestGCM.setAction("P");
-            requestGCM.setEquipoLocal(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setEquipoVisitante(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setFechaHora(partido.getDatetime());
-            requestGCM.setLugar(partido.getPlace());
-            requestGCM.setRonda(partido.getRonda());
-            Notificaciones.sendNotificaciones(requestGCM);
+            GenericPayloadRequest genericPayloadRequest=makePayloadNotification("P",partido);
+            Notificaciones.sendNotificaciones(genericPayloadRequest);
             return true;
         }
         else{
@@ -168,4 +164,19 @@ public class Partidos extends HttpServlet {
             return false;
         }
     }
+    
+    //Genera el Payload para notificaciones de EditarPartido
+   GenericPayloadRequest makePayloadNotification(String action,PartidosBean partido){
+        GenericPayloadRequest payloadRequest=new GenericPayloadRequest();
+        payloadRequest.put("id",partido.getIdpartido());
+        payloadRequest.put("action",action);
+        payloadRequest.put("eL",partido.getIdlocalteam().getIdequipo());
+        payloadRequest.put("eV",partido.getIdvisitteam().getIdequipo());
+        payloadRequest.put("fHr",partido.getDatetime());
+        payloadRequest.put("lugar",partido.getPlace());
+        payloadRequest.put("ronda",partido.getRonda());
+        return payloadRequest;
+    }
+    
+    
 }

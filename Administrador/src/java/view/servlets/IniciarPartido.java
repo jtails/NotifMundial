@@ -2,16 +2,20 @@ package view.servlets;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javapns.notification.PushNotificationPayload;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import org.json.JSONException;
 import view.beans.DetailsPartidoBean;
 import view.beans.EquiposBean;
 import view.beans.GolesBean;
 import view.beans.PartidosBean;
 import view.dao.ConnectionManager;
 import view.dao.PartidosDAO;
-import view.notification.android.GCMRequest;
-import view.notification.android.NotificationServiceImpl;
+import view.notification.AndroidPayloadRequest;
+import view.notification.GenericPayloadRequest;
 
 public class IniciarPartido extends HttpServlet {
     private static final String CONTENT_TYPE = "text/html; charset=windows-1252";
@@ -145,21 +149,8 @@ public class IniciarPartido extends HttpServlet {
         if(status){
             ConnectionManager.commit();
             //Enviamos la Notificacion
-            GCMRequest requestGCM=new GCMRequest();
-            requestGCM.setIdPartido(partido.getIdpartido());
-            requestGCM.setAction("G");
-            requestGCM.setEquipoLocal(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setEquipoVisitante(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setEstatusPartido(partido.getDetails().getStatus());
-            requestGCM.setFechaHora(partido.getDatetime());
-            requestGCM.setLugar(partido.getPlace());
-            requestGCM.setRonda(partido.getRonda());
-            requestGCM.setGolDe(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setGolesLocal(partido.getDetails().getGoleslocalteam());
-            requestGCM.setGolesVisitante(partido.getDetails().getGolesvisitteam());
-            requestGCM.setMinuto(minute);
-            requestGCM.setNum_notif(partido.getDetails().getNum_notf());
-            Notificaciones.sendNotificaciones(requestGCM);
+            GenericPayloadRequest genericPayloadRequest=makePayloadNotification("G",partido.getIdlocalteam().getIdequipo(),minute,partido);
+            Notificaciones.sendNotificaciones(genericPayloadRequest);
             return true;
         }
         else{
@@ -182,21 +173,8 @@ public class IniciarPartido extends HttpServlet {
         if(status){
             ConnectionManager.commit();
             //Enviamos la Notificacion
-            GCMRequest requestGCM=new GCMRequest();
-            requestGCM.setIdPartido(partido.getIdpartido());
-            requestGCM.setAction("G");
-            requestGCM.setEquipoLocal(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setEquipoVisitante(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setEstatusPartido(partido.getDetails().getStatus());
-            requestGCM.setFechaHora(partido.getDatetime());
-            requestGCM.setLugar(partido.getPlace());
-            requestGCM.setRonda(partido.getRonda());
-            requestGCM.setGolDe(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setGolesLocal(partido.getDetails().getGoleslocalteam());
-            requestGCM.setGolesVisitante(partido.getDetails().getGolesvisitteam());
-            requestGCM.setMinuto(minute);
-            requestGCM.setNum_notif(partido.getDetails().getNum_notf());
-            Notificaciones.sendNotificaciones(requestGCM);
+            GenericPayloadRequest genericPayloadRequest=makePayloadNotification("G",partido.getIdvisitteam().getIdequipo(),minute,partido);
+            Notificaciones.sendNotificaciones(genericPayloadRequest);
             return true;
         }
         else{
@@ -219,21 +197,8 @@ public class IniciarPartido extends HttpServlet {
         if(status){
             ConnectionManager.commit();
             //Enviamos la Notificacion
-            GCMRequest requestGCM=new GCMRequest();
-            requestGCM.setIdPartido(partido.getIdpartido());
-            requestGCM.setAction("A");
-            requestGCM.setEquipoLocal(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setEquipoVisitante(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setEstatusPartido(partido.getDetails().getStatus());
-            requestGCM.setFechaHora(partido.getDatetime());
-            requestGCM.setLugar(partido.getPlace());
-            requestGCM.setRonda(partido.getRonda());
-            requestGCM.setGolDe(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setGolesLocal(partido.getDetails().getGoleslocalteam());
-            requestGCM.setGolesVisitante(partido.getDetails().getGolesvisitteam());
-            requestGCM.setMinuto(minute);
-            requestGCM.setNum_notif(partido.getDetails().getNum_notf());
-            Notificaciones.sendNotificaciones(requestGCM);
+            GenericPayloadRequest genericPayloadRequest=makePayloadNotification("A",partido.getIdlocalteam().getIdequipo(),minute,partido);
+            Notificaciones.sendNotificaciones(genericPayloadRequest);
             return true;
         }
         else{
@@ -256,21 +221,8 @@ public class IniciarPartido extends HttpServlet {
         if(status){
             ConnectionManager.commit();
             //Enviamos la Notificacion
-            GCMRequest requestGCM=new GCMRequest();
-            requestGCM.setIdPartido(partido.getIdpartido());
-            requestGCM.setAction("A");
-            requestGCM.setEquipoLocal(partido.getIdlocalteam().getIdequipo());
-            requestGCM.setEquipoVisitante(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setEstatusPartido(partido.getDetails().getStatus());
-            requestGCM.setFechaHora(partido.getDatetime());
-            requestGCM.setLugar(partido.getPlace());
-            requestGCM.setRonda(partido.getRonda());
-            requestGCM.setGolDe(partido.getIdvisitteam().getIdequipo());
-            requestGCM.setGolesLocal(partido.getDetails().getGoleslocalteam());
-            requestGCM.setGolesVisitante(partido.getDetails().getGolesvisitteam());
-            requestGCM.setMinuto(minute);
-            requestGCM.setNum_notif(partido.getDetails().getNum_notf());
-            Notificaciones.sendNotificaciones(requestGCM);
+            GenericPayloadRequest genericPayloadRequest=makePayloadNotification("A",partido.getIdvisitteam().getIdequipo(),minute,partido);
+            Notificaciones.sendNotificaciones(genericPayloadRequest);
             return true;
         }
         else{
@@ -291,18 +243,33 @@ public class IniciarPartido extends HttpServlet {
         if(status){
             ConnectionManager.commit();
             //Enviamos la Notificacion
-            GCMRequest requestGCM=new GCMRequest();
-            requestGCM.setIdPartido(partido.getIdpartido());
-            requestGCM.setAction("F");
-            requestGCM.setEstatusPartido(partido.getDetails().getStatus());
-            requestGCM.setNum_notif(partido.getDetails().getNum_notf());
-            Notificaciones.sendNotificaciones(requestGCM);
+            GenericPayloadRequest genericPayloadRequest=makePayloadNotification("F","0","0",partido);
+            Notificaciones.sendNotificaciones(genericPayloadRequest);
             return true;
         }
         else{
             ConnectionManager.rollback();
             return false;
         }   
+    }
+    
+    //Genera el Payload para notificaciones de Gol,Anulación de Gol y Fin de Partido
+    public GenericPayloadRequest makePayloadNotification(String action,String golDe,String minute,PartidosBean partido){
+        GenericPayloadRequest payloadRequest=new GenericPayloadRequest();
+        payloadRequest.put("id",partido.getIdpartido());
+        payloadRequest.put("action",action);
+        payloadRequest.put("eL",partido.getIdlocalteam().getIdequipo());
+        payloadRequest.put("eV",partido.getIdvisitteam().getIdequipo());
+        payloadRequest.put("eP",partido.getDetails().getStatus());
+        payloadRequest.put("fHr",partido.getDatetime());
+        payloadRequest.put("lugar",partido.getPlace());
+        payloadRequest.put("ronda",partido.getRonda());
+        payloadRequest.put("golDe",golDe);
+        payloadRequest.put("gL",partido.getDetails().getGoleslocalteam());
+        payloadRequest.put("gV",partido.getDetails().getGolesvisitteam());
+        payloadRequest.put("min",minute);
+        payloadRequest.put("nN",partido.getDetails().getNum_notf());
+        return payloadRequest;
     }
     
 }

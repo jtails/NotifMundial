@@ -9,7 +9,7 @@ import view.beans.EmpresasBean;
 import view.beans.EquiposBean;
 import view.beans.NotificacionesBean;
 import view.beans.PartidosBean;
-import view.notification.android.Dispositivos;
+import view.notification.Dispositivos;
 
 
 public class NotificacionesDAO {

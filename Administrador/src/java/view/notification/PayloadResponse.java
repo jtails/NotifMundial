@@ -1,10 +1,10 @@
-package view.notification.android;
+package view.notification;
 
 import java.io.Serializable;
 
 import java.util.List;
 
-public class GCMResponse implements Serializable{
+public class PayloadResponse implements Serializable{
     private static final long serialVersionUID = 2193758673530977103L;
     private String multicast_id;
     private String success;

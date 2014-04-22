@@ -1,4 +1,4 @@
-package view.notification.android;
+package view.notification;
 
 import java.io.Serializable;
 
