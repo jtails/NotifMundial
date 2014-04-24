@@ -1,0 +1,145 @@
+package com.app.golmania;
+
+import android.app.IntentService;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+
+import com.app.golmania.dto.Equipo;
+import com.app.golmania.service.AppServices;
+import com.app.golmania.R;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+/**
+ * Clase que maneja GCM Intent Service
+ * 
+ * @author gsmirandal
+ * 
+ */
+public class GcmIntentService extends IntentService {
+	public static final int NOTIFICATION_ID = 1;
+	private static final String TAG = "GcmIntentService";
+	private NotificationManager mNotificationManager;
+	NotificationCompat.Builder builder;
+
+	public GcmIntentService() {
+		super("GcmIntentService");
+	}
+
+	@Override
+	protected void onHandleIntent(Intent intent) {
+		Bundle extras = intent.getExtras();
+		GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
+
+		// Tipo de mensaje
+		String messageType = gcm.getMessageType(intent);
+
+		if (!extras.isEmpty()) { // has effect of unparcelling Bundle
+			/*
+			 * Filter messages based on message type. Since it is likely that
+			 * GCM will be extended in the future with new message types, just
+			 * ignore any message types you're not interested in, or that you
+			 * don't recognize.
+			 */
+			if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR
+					.equals(messageType)) {
+				// sendNotification("Send error: " + extras.toString());
+			} else if (GoogleCloudMessaging.MESSAGE_TYPE_DELETED
+					.equals(messageType)) {
+				// sendNotification("Deleted messages on server: " +
+				// extras.toString());
+				// If it's a regular GCM message, do some work.
+			} else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE
+					.equals(messageType)) {
+				
+				AppServices appservice = new AppServices(this);
+
+				Log.i(TAG, "Received: " + extras.toString());
+				// Dependiendo del mensaje se agregara una nuevo partido o se
+				String accion = extras.getString(App.ACTION);
+				String idPartido = extras.getString(App.PARTIDO);
+				String idLocal = extras.getString(App.EQUIPOA);
+				String idVisita = extras.getString(App.EQUIPOB);
+				String fechaHora = extras.getString(App.FECHAHORA);
+				String lugar = extras.getString(App.LUGAR);
+				String ronda = extras.getString(App.RONDA);
+				String estatus = extras.getString(App.ESTATUS_P,"1");
+				String golesL = extras.getString(App.GOLESA);
+				String golesV = extras.getString(App.GOLESB);
+				String nm = extras.getString(App.NUM_NOTIF,"0");
+				int nN = Integer.parseInt(nm);
+				
+				if (accion.equals(App.ACTUALIZAR_PARTIDO)) {
+				
+					//crear registro del partido y su detalle
+					appservice.actualizarPartido(idPartido,idLocal,idVisita,fechaHora,lugar,ronda,estatus);
+					
+				} else if (accion.equals(App.GOL)) {
+					//actualizar el marcador
+					if(appservice.actualizarDetallePartido(accion,idPartido,golesL,golesV,null,nN)){
+						//enviar notificacion al usuario
+						sendNotification(extras);
+					}
+					
+					
+				} else {
+					//actualizar estatus del partido
+					//actualizar marcador
+					appservice.actualizarDetallePartido(accion,idPartido,golesL,golesV,estatus,nN);
+				}
+
+			}
+		}
+		// Release the wake lock provided by the WakefulBroadcastReceiver.
+		GcmBroadcastReceiver.completeWakefulIntent(intent);
+	}
+
+	// Put the message into a notification and post it.
+	// This is just one simple example of what you might choose to do with
+	// a GCM message.
+	private void sendNotification(Bundle extras) {
+		mNotificationManager = (NotificationManager) this
+				.getSystemService(Context.NOTIFICATION_SERVICE);
+		
+		Equipo equipo = new AppServices(this).consultaEquipoPorId( extras.getString(App.GOLDE));
+
+		Intent intent = new Intent(this, MainActivity.class);
+		
+		// se pone el fragment de gool
+		extras.putInt(MainActivity.OPCION_SELECCIONADA, MainActivity.GOL);
+		
+		// Se mandan parametros
+		intent.putExtras(extras);
+
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+				intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this)
+				.setSmallIcon(R.drawable.ic_notif)
+				.setContentTitle("Goooooool!")
+				.setStyle(
+						new NotificationCompat.BigTextStyle()
+								.bigText("Gool de "
+										+equipo.getDisplayNombre()))
+				.setContentText(
+						"Gool de " +equipo.getDisplayNombre())
+				.setAutoCancel(true)
+				// VIBRACION
+				.setVibrate(new long[] { 100, 100 })
+				// LED
+				.setLights(Color.YELLOW, 3000, 3000)
+				.setSound(
+						RingtoneManager
+								.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+
+		mBuilder.setContentIntent(contentIntent);
+		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+	}
+}

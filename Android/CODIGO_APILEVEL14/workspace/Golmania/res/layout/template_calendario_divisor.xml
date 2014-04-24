@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calendario_divisor_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/divisor"
+        android:gravity="center_horizontal|top"
+        android:text="TextView" 
+        style="@style/Subtitulo"/>

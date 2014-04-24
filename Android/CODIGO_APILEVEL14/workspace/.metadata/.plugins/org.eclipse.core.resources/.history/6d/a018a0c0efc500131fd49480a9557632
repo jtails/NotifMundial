@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="2"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/est_row_equipo"
+        style="@style/LabelShortEquipos"
+        android:layout_width="61dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:background="@drawable/est_tabla_equipo"
+        android:gravity="center"
+        android:text="BRA" />
+
+    <TextView
+        android:id="@+id/est_row_pj"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="1" />
+
+    <TextView
+        android:id="@+id/est_row_pg"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="1" />
+
+    <TextView
+        android:id="@+id/est_row_pe"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/est_row_pp"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/est_row_gf"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="3" />
+
+    <TextView
+        android:id="@+id/est_row_gc"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/est_row_pts"
+        style="@style/LabelEstadisticos"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:text="12" />
+
+</LinearLayout>

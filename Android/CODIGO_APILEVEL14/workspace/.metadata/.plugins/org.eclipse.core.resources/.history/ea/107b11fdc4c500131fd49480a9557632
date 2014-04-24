@@ -1,0 +1,228 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:gravity="fill_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imagen1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="0sp"
+        android:src="@drawable/back_publicidad" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <GridLayout
+                    android:id="@+id/gpoGridGrupoA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/gpo_back_gpo"
+                    android:columnCount="2" >
+
+                    <Button
+                        android:id="@+id/button4"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_a" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left|center_vertical"
+                        android:gravity="center"
+                        android:text="Brasil"
+                        android:textColor="#458B00"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:textColor="#458B00"
+                        android:textSize="14sp"
+        				android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Mexico" />
+
+                    <TextView
+                        android:textColor="#458B00"
+                        android:textSize="14sp"
+        				android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Camerun" />
+
+                    <TextView
+                        android:textColor="#458B00"
+                        android:textSize="14sp"
+        				android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Croacia" />
+                </GridLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <GridLayout
+                    android:id="@+id/gpoGridGrupoB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/gpo_back_gpo" >
+
+                    <!--
+                        Button
+                        android:id="@+id/button3"
+                        style="@style/BotonGrupos"
+                        android:text="@string/grupo_b" 
+                        android:onClick="onClick"/
+                    -->
+                </GridLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <FrameLayout style="@style/FrameGrupo" >
+
+                <GridLayout
+                    android:id="@+id/grid_grupoC"
+                    style="@style/GridGrupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button2"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_c" />
+                </GridLayout>
+            </FrameLayout>
+
+            <FrameLayout style="@style/FrameGrupo" >
+
+                <GridLayout
+                    android:id="@+id/grid_grupoD"
+                    style="@style/GridGrupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button4"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_d" />
+                </GridLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <FrameLayout style="@style/FrameGrupo" >
+
+                <GridLayout
+                    android:id="@+id/grid_grupoE"
+                    style="@style/GridGrupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button5"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_e" />
+                </GridLayout>
+            </FrameLayout>
+
+            <FrameLayout style="@style/FrameGrupo" >
+
+                <GridLayout
+                    android:id="@+id/grid_grupoF"
+                    style="@style/GridGrupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button6"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_f" />
+                </GridLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <FrameLayout style="@style/FrameGrupo" >
+
+                <GridLayout
+                    android:id="@+id/grid_grupoG"
+                    style="@style/GridGrupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button7"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_g" />
+                </GridLayout>
+            </FrameLayout>
+
+            <FrameLayout style="@style/FrameGrupo" >
+
+                <GridLayout
+                    android:id="@+id/grid_grupoH"
+                    style="@style/GridGrupos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button8"
+                        style="@style/BotonGrupos"
+                        android:onClick="onClick"
+                        android:text="@string/grupo_h" />
+                </GridLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

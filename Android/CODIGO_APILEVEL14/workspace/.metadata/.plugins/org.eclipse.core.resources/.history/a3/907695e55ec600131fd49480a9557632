@@ -1,0 +1,5 @@
+package com.app.golmania.service;
+
+public class GoogleServicesException extends Exception {
+
+}

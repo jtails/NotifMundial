@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/puntosEquipoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7" >
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/est_back_equipo" 
+                        android:adjustViewBounds="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/mex" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="22sp"
+                        android:text="Brasil" />
+
+                </RelativeLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" >
+
+                <ImageView
+                    android:id="@+id/ImageView09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_est_marcador" />
+
+                <TextView
+                    android:id="@+id/TextView06"
+                    style="@style/LabelPuntosEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="9" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7" >
+
+                <LinearLayout
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/est_back_equipo"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="left"
+                        android:src="@drawable/mex" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|fill|left"
+                        android:paddingLeft="10sp"
+                        android:text="Brasil" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_est_marcador" />
+
+                <TextView
+                    style="@style/LabelPuntosEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="9" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7" >
+
+                <LinearLayout
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/est_back_equipo"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="left"
+                        android:src="@drawable/mex" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|fill|left"
+                        android:paddingLeft="10sp"
+                        android:text="Brasil" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_est_marcador" />
+
+                <TextView
+                    style="@style/LabelPuntosEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="9" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        style="@style/Subtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="end"
+        android:layout_weight="1"
+        android:background="@drawable/divisor"
+        android:gravity="center_horizontal"
+        android:text="@string/estadisticas" />
+
+    <FrameLayout
+        android:id="@+id/FrameLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4" >
+
+        <LinearLayout
+            android:id="@+id/est_layout_tabla"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/estt_back_estadisticas"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1.4" >
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="584px"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_weight="7"
+                    android:src="@drawable/est_top" />
+            </LinearLayout>
+
+            <!--
+            LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/LabelShortEquipos"
+                    android:layout_width="61dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/est_tabla_equipo"
+                    android:gravity="center"
+                    android:text="BRA" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/LabelShortEquipos"
+                    android:layout_width="61dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/est_tabla_equipo"
+                    android:gravity="center"
+                    android:text="BRA" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/LabelShortEquipos"
+                    android:layout_width="61dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/est_tabla_equipo"
+                    android:gravity="center_horizontal|top"
+                    android:text="BRA" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/LabelShortEquipos"
+                    android:layout_width="61dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/est_tabla_equipo"
+                    android:gravity="center_horizontal|top"
+                    android:text="BRA" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/LabelEstadisticos"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="12" />
+            </LinearLayout
+            -->
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imagen2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:src="@drawable/back_publicidad" />
+
+</LinearLayout>

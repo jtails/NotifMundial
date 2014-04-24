@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+		<string name="BRASIL">Brasil,BRA</string>
+        <string name="CROACIA">Croacia,CRO</string>
+        <string name="MEXICO">México,MEX</string>
+        <string name="CAMERUN">Camerún,CMR</string>
+		<string name="ESPANA">España,ESP</string>
+        <string name="HOLANDA">Holanda,NED</string>
+        <string name="CHILE">Chile,CHI</string>
+        <string name="AUSTRALIA">Australia,AUS</string>
+		<string name="COLOMBIA">Colombia,COL</string>
+        <string name="GRECIA">Grecia,GRE</string>
+        <string name="COSTA_DE_MARFIL">C.Marfil,CIV</string>
+        <string name="JAPON">Japón,JPN</string>
+		<string name="URUGUAY">Uruguay,URU</string>
+        <string name="COSTA_RICA">Costa Rica,CRC</string>
+        <string name="INGLATERRA">Inglaterra,ENG</string>
+        <string name="ITALIA">Italia,ITA</string>
+		<string name="SUIZA">Suiza,SUI</string>
+        <string name="ECUADOR">Ecuador,ECU</string>
+        <string name="FRANCIA">Francia,FRA</string>
+        <string name="HONDURAS">Honduras,HON</string>
+		<string name="ARGENTINA">Argentina,ARG</string>
+        <string name="BOSNIA">Bosnia,BIH</string>
+        <!-- Bosnia y Herzegovina -->
+        <string name="IRAN">Irán,IRN</string>
+        <string name="NIGERIA">Nigeria,NGA</string>
+		<string name="ALEMANIA">Alemania,GER</string>
+        <string name="PORTUGAL">Portugal,POR</string>
+        <string name="GHANA">Ghana,GHA</string>
+        <string name="USA">U.S.A,USA</string>
+		<string name="BELGICA">Bélgica,BEL</string>
+        <string name="ARGELIA">Argelia,ALG</string>
+        <string name="RUSIA">Rusia,RUS</string>
+        <string name="KOREA">Korea,KOR</string>
+        <!-- República de Korea -->
+</resources>

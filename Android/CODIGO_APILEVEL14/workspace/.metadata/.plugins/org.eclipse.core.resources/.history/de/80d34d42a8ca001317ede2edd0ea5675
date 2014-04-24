@@ -1,0 +1,637 @@
+package com.app.golmania.service;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.app.golmania.App;
+import com.app.golmania.dto.Equipo;
+import com.app.golmania.dto.Grupo;
+import com.app.golmania.dto.PaginaPartido;
+import com.app.golmania.dto.Partido;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+public class AppServices {
+
+	private static final String TAG = "AppServices";
+	private DBDao dbdao;
+	private WSDao wsdao;
+	private Context context;
+
+	public AppServices(Context context) {
+		this.dbdao = new DBDao(context);
+		this.wsdao = new WSDao();
+		this.context = context;
+	}
+
+	public String obtenerORegsitrarGCMID() throws GoogleServicesException {
+		String regid = null;
+
+		// verifica playservices , lanza excepcion si falla
+		checkPlayServices();
+
+		// get reg id from shared preferences
+		regid = getRegistrationId(context);
+
+		if (regid.isEmpty()) {
+			regid = registerInBackground();
+		}
+
+		return regid;
+
+	}
+
+	/**
+	 * Gets the current registration ID for application on GCM service.
+	 * <p>
+	 * If result is empty, the app needs to register.
+	 * 
+	 * @return registration ID, or empty string if there is no existing
+	 *         registration ID.
+	 */
+	private String getRegistrationId(Context context) {
+		final SharedPreferences prefs = getGCMPreferences(context);
+		String registrationId = prefs.getString(App.PROPERTY_REG_ID, "");
+		if (registrationId.isEmpty()) {
+			Log.i(App.TAG, "Registration not found.");
+			return "";
+		}
+		// Check if app was updated; if so, it must clear the registration ID
+		// since the existing regID is not guaranteed to work with the new
+		// app version.
+		int registeredVersion = prefs.getInt(App.PROPERTY_APP_VERSION,
+				Integer.MIN_VALUE);
+		int currentVersion = getAppVersion(context);
+		if (registeredVersion != currentVersion) {
+			Log.i(App.TAG, "App version changed.");
+			return "";
+		}
+		return registrationId;
+	}
+
+	/**
+	 * Check the device to make sure it has the Google Play Services APK. If it
+	 * doesn't, display a dialog that allows users to download the APK from the
+	 * Google Play Store or enable it in the device's system settings.
+	 */
+	private void checkPlayServices() throws GoogleServicesException{
+		final int resultCode = GooglePlayServicesUtil
+				.isGooglePlayServicesAvailable(context);
+		if (resultCode != ConnectionResult.SUCCESS) {
+			// mostrar mensaje en el thread principal
+			Log.i(TAG, "resulcode: " + resultCode);
+			throw new GoogleServicesException(resultCode, "Activar servicios de Google");
+
+		}
+	}
+
+	/**
+	 * Devuelve la lista de los grupos del mundial
+	 * 
+	 * @return
+	 */
+	public static List<String> obtenerTitulosMenuNavegacion() {
+		return new ArrayList<String>(Arrays.asList("Grupo A", "Grupo B",
+				"Grupo C", "Grupo D", "Grupo E", "Grupo F", "Grupo G",
+				"Grupo H", "Home", "Calendario"));
+
+	}
+
+	/**
+	 * Servicio que consulta el nombre del grupo por indice
+	 * 
+	 * 
+	 * @param indice
+	 *            A
+	 * @return Grupo A
+	 */
+	public static String consultaNombreGrupoPorIndice(int indice) {
+		return obtenerTitulosMenuNavegacion().get(indice);
+	}
+
+	/**
+	 * Servicio que consulta el grupo por id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Grupo consultaGrupoPorDisplayName(String grupo) {
+		// TODO: consultar websercice
+		return this.dbdao.consultaGrupoPorNombre(grupo);
+	}
+
+	/**
+	 * Servicio que consulta el grupo por indice
+	 * 
+	 * @param 0,1,2
+	 * @return A,B,C
+	 */
+	public Grupo consultaGrupoPorIndice(int indice) {
+		// aqui hace una consulta por id ej. 1,2..8
+		Grupo grupo = this.dbdao.consultaGrupoPorId(indice);
+		return grupo;
+	}
+
+	/**
+	 * Consulta equipo por id
+	 * 
+	 * @param idEquipo
+	 * @param context
+	 * @return
+	 */
+	public Equipo consultaEquipoPorId(String idEquipo) {
+		return this.dbdao.consultaEquipoPorId(idEquipo);
+	}
+
+	/**
+	 * Crea un nuevo partido
+	 * 
+	 * @param idPartido
+	 * @param idLocal
+	 * @param idVisitante
+	 * @param fechaHora
+	 * @param lugar
+	 * @param ronda
+	 * @param estatusP
+	 */
+	public void actualizarPartido(String idPartido, String idLocal,
+			String idVisitante, String fechaHora, String lugar, String ronda,
+			String estatusP) {
+		// crear registro del partido y detalle
+		this.dbdao.modificarPartido(idPartido, idLocal, idVisitante, fechaHora,
+				lugar, ronda);
+		this.dbdao.actualizarEstatus(idPartido, estatusP);
+	}
+
+	/**
+	 * Actualiza el marcador
+	 * 
+	 * @param idPartido
+	 * @param golesL
+	 * @param golesV
+	 * @param accion 
+	 * @param nN 
+	 */
+	public boolean actualizarDetallePartido(String accion,String idPartido, String golesL,
+			String golesV, String estatus, int nN) {
+		int nmregistrada = this.dbdao.consultaNotificacionPorPartido(idPartido);
+		//si la nueva notificacion es mayor a la registrada entonces actualizar
+		if(nN > nmregistrada){
+			if(accion.equals(App.GOL) || accion.equals(App.ANULACION_GOL)){
+				this.dbdao.actualizaMarcador(idPartido, golesL, golesV,nN);
+			} else if(accion.equals (App.FIN_PARTIDO)) {
+				this.dbdao.actualizarEstatus(idPartido, estatus);
+			}
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Consulta que pagina debe mostrarse a partir de la fecha indicada
+	 * 
+	 * @param fecha
+	 * @return 1,2,3...
+	 */
+	public int consultaPaginaPartidosPorFecha(String fecha) {
+		List<Partido> partidos = this.dbdao.consultaPartidos();
+		int pagina = 1;
+		for (int i = 0; i < partidos.size(); i++) {
+			if (partidos.get(i).getFecha().equals(fecha)) {
+				// EJ, registro 8 , 8+1 = 9, /7=1.fracc =1 +1=2
+				pagina = ((i + 1) / 7);
+				break;
+			}
+		}
+		return pagina;
+	}
+
+	public PaginaPartido consultaPaginaPartidosPorPag(int pagina) {
+		PaginaPartido paginaPartido = new PaginaPartido();
+		List<Partido> partidos = this.dbdao.consultaPartidos();
+		paginaPartido.setPagina(pagina);
+		pagina++;
+		int size = pagina * 7 <= partidos.size() ? 7 : 7%(pagina * 7 - partidos.size());
+		String[] idPartidos = new String[size];
+		
+		for (int i = (pagina * 7) - 7, id = 0; id < size; i++, id++) {
+			idPartidos[id] = partidos.get(i).getIdPartido();
+		}
+		paginaPartido.setPartidos(this.dbdao.consultaPartidosPorId(idPartidos));
+
+		return paginaPartido;
+	}
+
+	/**
+	 * Crea la configuracion del usuario y la guarda en las preferencias del
+	 * usuario
+	 * 
+	 * @return
+	 */
+	public boolean activarApp(String codigoEmpresa, String gcmId) {
+		String json = this.wsdao.consultaConfiguracion(codigoEmpresa, gcmId);
+		if (json == null) {
+			return false;
+		}
+		JSONObject jsonObj;
+		try {
+			jsonObj = new JSONObject(json);
+
+			String status = jsonObj.getString("status");
+			if(!status.equals("0")){
+				return false;
+			}
+			//id_partido,datetime,place,idlocalteam,idvisitteam,ronda,goleslocalteam,golesvisitteam,status
+			JSONArray img = jsonObj.getJSONArray("imagenes");
+			for(int i = 0; i<img.length();i++){
+				JSONObject imagen = img.getJSONObject(i);
+				
+				salvaImagen(imagen.getString("data"), "imagen" + (i+1) + ".png");
+			}
+			JSONArray partidos = jsonObj.getJSONArray("partidos");
+			for(int i = 0; i<partidos.length();i++){
+				JSONObject partido = partidos.getJSONObject(i);
+				Partido p = this.getPartido(partido);
+				Log.i(TAG,partido.toString());
+				//id_partido,datetime,place,idlocalteam,idvisitteam,ronda,goleslocalteam,golesvisitteam,status
+				this.dbdao.modificarPartido(p.getIdPartido(),p.getEquipoLocal().getId(),p.getEquipoVisitante().getId(),p.getFechaHora(),p.getLugarPartido(),p.getRonda()+"");
+				this.dbdao.actualizaDetails(p.getIdPartido(), p.getGolesEquipoA(), p.getGolesEquipoB(), p.getNumnotif(), p.getStatus()+"");
+				
+			}
+			salvaPreferencias();
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		//	
+		
+		return true;
+	}
+
+	private Partido getPartido(JSONObject partido) throws JSONException {
+		// TODO Auto-generated method stub
+		Partido p = new Partido(partido.getString("datetime"),partido.getString("place"));
+		JSONObject d = partido.getJSONObject("details");
+		p.setGolesEquipoA(d.getString("goleslocalteam"));
+		p.setGolesEquipoB(d.getString("golesvisitteam"));
+		p.setNumnotif(d.getInt("num_notf"));
+		p.setStatus(d.getInt("status"));
+		d = partido.getJSONObject("idlocalteam");
+		Equipo local = new Equipo(d.getString("idequipo"),d.getString("displayname"),"");
+		p.setIdPartido(partido.getString("idpartido"));
+		d = partido.getJSONObject("idvisitteam");
+		Equipo visita = new Equipo(d.getString("idequipo"),d.getString("displayname"),"");
+		p.setRonda(partido.getInt("ronda"));
+		p.setEquipoLocal(local);
+		p.setEquipoVisitante(visita);
+		return p;
+	}
+
+	/**
+	 * Salva la imagen en
+	 * /storage/emulated/0/Android/data/com.app.mundialbrasil/files/imagen0.png
+	 * 
+	 * @param base64ImageData
+	 * @param nombreArchivo
+	 */
+	private void salvaImagen(String base64ImageData, String nombreArchivo) {
+		FileOutputStream fos = null;
+
+		try {
+
+			if (base64ImageData != null) {
+
+				File file = new File(context.getExternalFilesDir(null),
+						nombreArchivo);
+
+				fos = new FileOutputStream(file);
+				byte[] decodedString = android.util.Base64.decode(
+						base64ImageData, android.util.Base64.DEFAULT);
+				fos.write(decodedString);
+
+				fos.flush();
+				fos.close();
+
+			}
+
+		} catch (Exception e) {
+
+		} finally {
+			if (fos != null) {
+				fos = null;
+			}
+		}
+	}
+
+	/**
+	 * Guarda que la app fue activada en el server
+	 */
+	private void salvaPreferencias() {
+		SharedPreferences settings = context.getSharedPreferences(
+				App.PREF_GENERALES, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putBoolean(App.APP_ACTIVADA, true);
+		editor.putInt(App.IMG_SIGUIENTE, 4);
+		// Commit the edits!
+		editor.commit();
+	}
+
+	/**
+	 * Consulta si la app ya fue activada
+	 * 
+	 * @return
+	 */
+	public boolean appActivada() {
+		// Restore preferences
+		SharedPreferences settings = context.getSharedPreferences(
+				App.PREF_GENERALES, 0);
+		boolean activada = settings.getBoolean(App.APP_ACTIVADA, false);
+		return activada;
+	}
+
+	/**
+	 * @return Application's {@code SharedPreferences}.
+	 */
+	private SharedPreferences getGCMPreferences(Context context) {
+		// This sample app persists the registration ID in shared preferences,
+		// but
+		// how you store the regID in your app is up to you.
+		return context.getSharedPreferences(App.USER_PREFERENCES,
+				Context.MODE_PRIVATE);
+	}
+
+	/**
+	 * @return Application's version code from the {@code PackageManager}.
+	 */
+	private static int getAppVersion(Context context) {
+		try {
+			PackageInfo packageInfo = context.getPackageManager()
+					.getPackageInfo(context.getPackageName(), 0);
+			return packageInfo.versionCode;
+		} catch (NameNotFoundException e) {
+			// should never happen
+			throw new RuntimeException("Could not get package name: " + e);
+		}
+	}
+
+	/**
+	 * Registers the application with GCM servers asynchronously.
+	 * <p>
+	 * Stores the registration ID and app versionCode in the application's
+	 * shared preferences.
+	 */
+	private String registerInBackground() {
+
+		GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(context);
+		if (gcm == null) {
+			gcm = GoogleCloudMessaging.getInstance(context);
+		}
+		String regid;
+		try {
+			regid = gcm.register(App.SENDER_ID);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		Log.i(App.TAG, "Device registered: " + regid);// , registration ID=" +
+														// regid;
+
+		// Persist the regID - no need to register again.
+		storeRegistrationId(regid);
+		return regid;
+
+	}
+
+	/**
+	 * Stores the registration ID and app versionCode in the application's
+	 * {@code SharedPreferences}.
+	 * 
+	 * @param context
+	 *            application's context.
+	 * @param regId
+	 *            registration ID
+	 */
+	private void storeRegistrationId(String regId) {
+		final SharedPreferences prefs = getGCMPreferences(context);
+		int appVersion = getAppVersion(context);
+		Log.i(App.TAG, "Saving regId on app version " + appVersion);
+
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putString(App.PROPERTY_REG_ID, regId);
+		editor.putInt(App.PROPERTY_APP_VERSION, appVersion);
+		editor.commit();
+	}
+	
+	/**
+	/**
+	 * 
+	 * @param img
+	 * @param string
+	 */
+	public void setImgFromExternalDir(View img, String nombre) {
+		ImageView imgV = (ImageView) img;
+		BitmapDrawable draw = (BitmapDrawable) imgV.getDrawable();
+		if(draw != null){
+			draw.getBitmap().recycle();
+		}
+		new BitmapWorkerTask((ImageView) img).doInBackground(nombre);
+	}
+	//add
+	public void setImgFromResources(View img, Integer id) {
+		ImageView imgV = (ImageView) img;
+		BitmapDrawable draw = (BitmapDrawable) imgV.getDrawable();
+		if(draw != null){
+			draw.getBitmap().recycle();
+		}
+		new BitmapWorkerTaskResource((ImageView) img).doInBackground(id);
+	}
+	
+	
+	
+	public class BitmapWorkerTask extends AsyncTask<String, Void, Bitmap> {
+	    private final WeakReference<ImageView> imageViewReference;
+	    
+		private int calculateInSampleSize(BitmapFactory.Options options,
+				int reqWidth, int reqHeight) {
+			// Raw height and width of image
+			final int height = options.outHeight;
+			final int width = options.outWidth;
+			int inSampleSize = 1;
+
+			if (height > reqHeight || width > reqWidth) {
+
+				final int halfHeight = height / 2;
+				final int halfWidth = width / 2;
+
+				// Calculate the largest inSampleSize value that is a power of 2
+				// and keeps both
+				// height and width larger than the requested height and width.
+				while ((halfHeight / inSampleSize) > reqHeight
+						&& (halfWidth / inSampleSize) > reqWidth) {
+					inSampleSize *= 2;
+				}
+			}
+
+			return inSampleSize;
+		}
+		
+		private  Bitmap decodeSampledBitmapFromResource(String path,int reqWidth, int reqHeight) {
+			String pathImg= AppServices.this.context
+					.getExternalFilesDir(null).getAbsolutePath()
+					.concat("/").concat(path);
+
+		    // First decode with inJustDecodeBounds=true to check dimensions
+		    final BitmapFactory.Options options = new BitmapFactory.Options();
+		    options.inJustDecodeBounds = true;
+		    BitmapFactory.decodeFile(pathImg, options);
+
+		    // Calculate inSampleSize
+		    options.inSampleSize = 2;//calculateInSampleSize(options, reqWidth, reqHeight);
+		    options.inPurgeable = true;
+		    
+		    // Decode bitmap with inSampleSize set
+		    options.inJustDecodeBounds = false;
+		    return BitmapFactory.decodeFile(pathImg, options);
+		    
+		}
+		
+	    public BitmapWorkerTask(ImageView imageView) {
+	        // Use a WeakReference to ensure the ImageView can be garbage collected
+	        imageViewReference = new WeakReference<ImageView>(imageView);
+	    }
+
+	    // Decode image in background.
+	    @Override
+	    protected Bitmap doInBackground(String... params) {
+	    	Bitmap bitmap = decodeSampledBitmapFromResource(params[0], 100, 100);
+	       if (imageViewReference != null && bitmap != null) {
+	            final ImageView imageView = imageViewReference.get();
+	            if (imageView != null) {
+	                imageView.setImageBitmap(bitmap);
+	            }
+	        }
+	       return bitmap;
+	    }
+
+	    // Once complete, see if ImageView is still around and set bitmap.
+	    @Override
+	    protected void onPostExecute(Bitmap bitmap) {
+	    	Log.i("BITMAP", "Generando imagen");
+	      
+	    }
+	}
+	
+	
+	public class BitmapWorkerTaskResource extends AsyncTask<Integer, Void, Bitmap> {
+	    private final WeakReference<ImageView> imageViewReference;
+	    
+		private int calculateInSampleSize(BitmapFactory.Options options,
+				int reqWidth, int reqHeight) {
+			// Raw height and width of image
+			final int height = options.outHeight;
+			final int width = options.outWidth;
+			int inSampleSize = 1;
+
+			if (height > reqHeight || width > reqWidth) {
+
+				final int halfHeight = height / 2;
+				final int halfWidth = width / 2;
+
+				// Calculate the largest inSampleSize value that is a power of 2
+				// and keeps both
+				// height and width larger than the requested height and width.
+				while ((halfHeight / inSampleSize) > reqHeight
+						&& (halfWidth / inSampleSize) > reqWidth) {
+					inSampleSize *= 2;
+				}
+			}
+
+			return inSampleSize;
+		}
+		
+		private Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+		        int reqWidth, int reqHeight) {
+
+		    // First decode with inJustDecodeBounds=true to check dimensions
+		    final BitmapFactory.Options options = new BitmapFactory.Options();
+		    //options.inJustDecodeBounds = true;
+		    //BitmapFactory.decodeResource(res, resId, options);
+
+		    // Calculate inSampleSize
+		    options.inSampleSize = 1;//calculateInSampleSize(options, reqWidth, reqHeight);
+		    options.inPurgeable = true;
+		   
+		    // Decode bitmap with inSampleSize set
+		    return BitmapFactory.decodeResource(res, resId, options);
+		}
+		
+	    public BitmapWorkerTaskResource(ImageView imageView) {
+	        // Use a WeakReference to ensure the ImageView can be garbage collected
+	        imageViewReference = new WeakReference<ImageView>(imageView);
+	    }
+
+	    // Decode image in background.
+	    @Override
+	    protected Bitmap doInBackground(Integer... params) {
+	       Bitmap bitmap = decodeSampledBitmapFromResource(AppServices.this.context.getResources(),params[0], 100, 100);
+	    	//BitmapFactory.Options options = new BitmapFactory.Options();
+			//options.inTempStorage = new byte[16*1024];
+			      
+			//Bitmap bitmap = BitmapFactory.decodeResource(AppServices.this.context.getResources(), params[0], options);
+	       if (imageViewReference != null && bitmap != null) {
+	            final ImageView imageView = imageViewReference.get();
+	            if (imageView != null) {
+	                imageView.setImageBitmap(bitmap);
+	            }
+	        }
+	       return bitmap;
+	    }
+
+	    // Once complete, see if ImageView is still around and set bitmap.
+	    @Override
+	    protected void onPostExecute(Bitmap bitmap) {
+	        Log.i("BITMAP", "from resource");
+	    }
+	}
+
+
+	public int getImagenAleatoria() {
+		SharedPreferences settings = context.getSharedPreferences(
+				App.PREF_GENERALES, 0);
+		int noImg = settings.getInt(App.IMG_SIGUIENTE, 4);
+
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt(App.IMG_SIGUIENTE, noImg == 6 ? 4 : ++noImg);
+		// Commit the edits!
+		editor.commit();
+		
+		return noImg;
+	}
+	
+}

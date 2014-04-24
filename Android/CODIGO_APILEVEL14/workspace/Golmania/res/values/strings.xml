@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Golmania</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="img_log_desc">logo mundial brasil</string>
+    <string name="title_activity_grupos">Grupos</string>
+    <string name="title_activity_calendario">CalendarioActivity</string>
+    <string name="title_activity_gol">GolActivity</string>
+    <string name="estadisticas">Estadísticas</string>
+    <string name="p_jugados">PJ</string>
+    <string name="p_ganados">G</string>
+    <string name="p_empatados">E</string>
+    <string name="p_perdidos">P</string>
+    <string name="goles_favor">GF</string>
+    <string name="goles_contra">GC</string>
+    <string name="puntos">Pts</string>
+    <string name="proximos_partidos">Próximos Partidos</string>
+    <string name="posibles_partidos">Posibles Partidos</string>
+    <string name="grupo_a">GRUPO A</string>
+    <string name="grupo_b">GRUPO B</string>
+    <string name="grupo_c">GRUPO C</string>
+    <string name="grupo_d">GRUPO D</string>
+    <string name="grupo_e">GRUPO E</string>
+    <string name="grupo_f">GRUPO F</string>
+    <string name="grupo_g">GRUPO G</string>
+    <string name="grupo_h">GRUPO H</string>
+    <string name="historia">Historia</string>
+
+    <string-array name="grupo_a_array">
+        <item>Brasil</item>
+        <item>Croacia</item>
+        <item>México</item>
+        <item>Camerún</item>
+    </string-array>
+    <string-array name="grupo_b_array">
+        <item>España</item>
+        <item>Holanda</item>
+        <item>Chile</item>
+        <item>Australia</item>
+    </string-array>
+    <string-array name="grupo_c_array">
+        <item>Colombia</item>
+        <item>Grecia</item>
+        <item>C.Marfil</item>
+        <item>Japón</item>
+    </string-array>
+    <string-array name="grupo_d_array">
+        <item>Uruguay</item>
+        <item>Costa Rica</item>
+        <item>Inglaterra</item>
+        <item>Italia</item>
+    </string-array>
+    <string-array name="grupo_e_array">
+        <item>Suiza</item>
+        <item>Ecuador</item>
+        <item>Francia</item>
+        <item>Honduras</item>
+    </string-array>
+    <string-array name="grupo_f_array">
+        <item>Argentina</item>
+        <item>Bosnia</item>
+        <!-- Bosnia y Herzegovina -->
+        <item>Irán</item>
+        <item>Nigeria</item>
+    </string-array>
+    <string-array name="grupo_g_array">
+        <item>Alemania</item>
+        <item>Portugal</item>
+        <item>Ghana</item>
+        <item>U.S.A</item>
+        <!-- Estados Unidos -->
+    </string-array>
+    <string-array name="grupo_h_array">
+        <item>Bélgica</item>
+        <item>Argelia</item>
+        <item>Rusia</item>
+        <item>Korea</item>
+        <!-- República de Korea -->
+    </string-array>
+
+    <string name="title_activity_login">Golmania</string>
+    <string name="ingrese_codigo">Ingrese código de activación</string>
+    <string name="boton_activar">Activar</string>
+    <string name="login_ingrese_codigo_hint">código númerico</string>
+
+</resources>

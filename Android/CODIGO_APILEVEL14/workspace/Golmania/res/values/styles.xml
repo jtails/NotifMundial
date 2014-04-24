@@ -1,0 +1,149 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowBackground">@drawable/fondo</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <!-- Tema del mundial -->
+    <style name="AppBaseMundial">
+        <item name="android:textColor">#458B00</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Cross App -->
+    <style name="ImgPublicidad">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!-- Estilo para los grid layout de la pantalla de grupo -->
+    <style name="FrameGrupo">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+         
+    </style>
+
+    <style name="GridGrupos">
+        <!-- item name="android:background">@drawable/shape_gradiente_blanco</item-->
+        <item name="android:layout_gravity">center_horizontal|top</item>
+        <item name="android:columnCount">2</item>
+    </style>
+
+    <style name="BotonGrupos">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_gravity">fill_horizontal</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="LabelEquipos" parent="AppBaseMundial">
+        <item name="android:paddingLeft">10sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Estilo para la pantalla de Estadisticos -->
+    <!-- template puntos equipo linear layout IMG-EQUIPO-PUNTOS -->
+    <style name="Subtitulo" parent="AppBaseMundial">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="LabelEquipoEstadisticos" parent="LabelEquipos">
+        <item name="android:background">@drawable/shape_gradiente_blanco</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="LabelPuntosEstadisticos">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#7EBB32</item>
+    </style>
+    <style name="LabelEliminatorias">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#808080</item>
+    </style>
+    <!-- estilos para la tabla de estadisticas -->
+    <!-- titulos rojos PJ G E P GF GC -->
+    <style name="CabeceraTabla">
+        <item name="android:padding">8sp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">fill</item>
+    </style>
+    <!-- los valores de la tabla -->
+    <style name="LabelEstadisticos">
+        <!--item name="android:paddingTop">8sp</item-->
+        <item name="android:paddingBottom">12sp</item>
+        <item name="android:paddingLeft">10sp</item>
+        <item name="android:paddingRight">10sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Contraste" parent="LabelEstadisticos">
+        <item name="android:background">#D8D8D8</item>
+    </style>
+    <!-- COLUMNA EQUIPO EN LA TABLA DE ESTADISTICOS -->
+    <style name="LabelShortEquipos">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingRight">20sp</item>
+    </style>
+
+    <!-- Estilo para el calendario de equipos -->
+    <style name="HoraFecha" parent="AppBaseMundial">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LugarPartido" parent="AppBaseMundial">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Estilo para la pantalla de gol -->
+    <style name="TextGol">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">32sp</item>
+        <!-- item name="android:textStyle">bold</item -->
+        <item name="android:textColor">#186A16</item>
+    </style>
+
+    <style name="GolesEquipo">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">80sp</item>
+        <item name="android:layout_gravity">fill|right</item>
+    </style>
+
+    <style name="GolNombreEquipo">
+        <item name="android:textSize">17sp</item>
+        <item name="android:gravity">center_horizontal|top</item>
+        <item name="android:layout_gravity">fill|right</item>
+    </style>
+
+</resources>

@@ -1,0 +1,568 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/divisor"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+         android:layout_height="0dp"
+        android:layout_weight="2">
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ImageView
+            android:id="@+id/ImageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:background="@drawable/cal_matchgray"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="2dp"
+                android:src="@drawable/cal_matchgreen" />
+
+            <TextView
+                android:id="@+id/calendario_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:text="12/JUN"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/calendario_golesLocal"
+                android:layout_alignBottom="@+id/calendario_golesLocal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Río de Janeiro"
+                android:textColor="#3C9310"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/calendario_fecha"
+                android:layout_below="@+id/ImageView12"
+                android:text="4"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ImageView12"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:text="17:00"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calendario_golesLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ImageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ImageView
+            android:id="@+id/ImageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+           android:src="@drawable/mex" />
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:background="@drawable/cal_matchgray"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="2dp"
+                android:src="@drawable/cal_matchgreen" />
+
+            <TextView
+                android:id="@+id/calendario_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:text="12/JUN"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/calendario_golesLocal"
+                android:layout_alignBottom="@+id/calendario_golesLocal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Río de Janeiro"
+                android:textColor="#3C9310"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/calendario_fecha"
+                android:layout_below="@+id/ImageView12"
+                android:text="4"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ImageView12"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:text="17:00"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calendario_golesLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ImageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ImageView
+            android:id="@+id/ImageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:background="@drawable/cal_matchgray"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="2dp"
+                android:src="@drawable/cal_matchgreen" />
+
+            <TextView
+                android:id="@+id/calendario_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:text="12/JUN"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/calendario_golesLocal"
+                android:layout_alignBottom="@+id/calendario_golesLocal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Río de Janeiro"
+                android:textColor="#3C9310"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/calendario_fecha"
+                android:layout_below="@+id/ImageView12"
+                android:text="4"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ImageView12"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:text="17:00"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calendario_golesLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ImageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+           android:src="@drawable/mex" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ImageView
+            android:id="@+id/ImageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+           android:src="@drawable/mex" />
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:background="@drawable/cal_matchgray"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="2dp"
+                android:src="@drawable/cal_matchgreen" />
+
+            <TextView
+                android:id="@+id/calendario_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:text="12/JUN"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/calendario_golesLocal"
+                android:layout_alignBottom="@+id/calendario_golesLocal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Río de Janeiro"
+                android:textColor="#3C9310"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/calendario_fecha"
+                android:layout_below="@+id/ImageView12"
+                android:text="4"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ImageView12"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:text="17:00"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calendario_golesLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ImageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ImageView
+            android:id="@+id/ImageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:background="@drawable/cal_matchgray"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="2dp"
+                android:src="@drawable/cal_matchgreen" />
+
+            <TextView
+                android:id="@+id/calendario_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:text="12/JUN"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/calendario_golesLocal"
+                android:layout_alignBottom="@+id/calendario_golesLocal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Río de Janeiro"
+                android:textColor="#3C9310"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/calendario_fecha"
+                android:layout_below="@+id/ImageView12"
+                android:text="4"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ImageView12"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:text="17:00"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calendario_golesLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ImageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ImageView
+            android:id="@+id/ImageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:background="@drawable/cal_matchgray"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="2dp"
+                android:src="@drawable/cal_matchgreen" />
+
+            <TextView
+                android:id="@+id/calendario_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:text="12/JUN"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/calendario_golesLocal"
+                android:layout_alignBottom="@+id/calendario_golesLocal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Río de Janeiro"
+                android:textColor="#3C9310"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/calendario_fecha"
+                android:layout_below="@+id/ImageView12"
+                android:text="4"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ImageView12"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:text="17:00"
+                android:textColor="#006400"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calendario_golesLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="#3C9310"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ImageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/mex" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/divisor"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/divisor"
+        android:gravity="center"
+        android:text="TextView" />
+
+</LinearLayout>
